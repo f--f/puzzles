@@ -1,5 +1,5 @@
-""" 
-Arrays: containers which hold multiple data records and are addressable 
+"""
+Arrays: containers which hold multiple data records and are addressable
 by index (random access). Arrays occupy contiguous blocks in memory.
 
 Properties (given n values):
@@ -9,7 +9,7 @@ Properties (given n values):
 - For dynamic arrays:
     - O(1) insertion at the end of the array
     - O(n) insertion at the beginning (requires every element to be shifted)
-- There is a worst-case O(n) cost for insertion if the array's capacity needs 
+- There is a worst-case O(n) cost for insertion if the array's capacity needs
 to be expanded, but the amortized cost is O(1).
 
 In Python, dynamically sized arrays are implemented via lists.
@@ -22,19 +22,24 @@ from matplotlib import pyplot as plt
 import timeit
 import random
 
+
 class ArrayTiming():
     def __init__(self, n):
-        self.a = [0]*n
-        self.random_index = random.randint(0,len(self.a)-1)
+        self.a = [0] * n
+        self.random_index = random.randint(0, len(self.a) - 1)
+
     def insert_beginning(self):
-        self.a.insert(0,1)
+        self.a.insert(0, 1)
+
     def insert_end(self):
         self.a.append(1)
+
     def access(self):
         self.a[self.random_index]
 
-N = 10000 # Number of executions to timeit.
-samples = [1000*(i)+1 for i in range(10)]
+
+N = 10000  # Number of executions to timeit.
+samples = [1000 * (i) + 1 for i in range(10)]
 arrs = [ArrayTiming(n) for n in samples]
 
 times = {
