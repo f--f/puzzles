@@ -9,7 +9,7 @@ def get_size(num):
     squares, which can be represented by a series (2n-1)^2. We can invert
     the identified square to get the size.
     """
-    return 2*int(((num-1)**0.5 + 1) / 2) + 1
+    return 2 * int(((num - 1)**0.5 + 1) / 2) + 1
 
 
 def dist(num):
@@ -20,9 +20,10 @@ def dist(num):
     steps is (n-1). Then, for each distance away from the closest corner, we
     reduce the distance by that many steps.
     """
-    if num == 1: return 0  # Handle base case
+    if num == 1:
+        return 0  # Handle base case
     n = get_size(num)
-    max_dist = n-1
+    max_dist = n - 1
     for corner in range(n**2, (n-2)**2, -(n-1)):
         steps_from_corner = abs(corner - num)
         if steps_from_corner < n//2+1:  # Closest corner to num
@@ -33,8 +34,8 @@ def sum_neighbours(d,x,y):
     """Given a coordinate (x,y) and a dict d with keys of coordinates,
     return sum of neighbours of (x,y). (Undefined coordinates count as 0.)
     """
-    return sum(d.get((i,j),0) for i in range(x-1,x+2) 
-                              for j in range(y-1,y+2) 
+    return sum(d.get((i,j),0) for i in (x-1, x, x+1)
+                              for j in (y-1, y, y+1)
                               if not (i == x and j == y))
 
 
@@ -60,7 +61,7 @@ def spiral_stress(num):
             if spiral[(x,y)] > num:
                 return spiral[(x,y)]
 
-# Part 1     
+# Part 1
 assert dist(1) == 0
 assert dist(12) == 3
 assert dist(23) == 2

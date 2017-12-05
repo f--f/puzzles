@@ -15,12 +15,12 @@ def valid_p2(p):
     p_sorted = [''.join(sorted(word)) for word in p.split()]
     return len(set(p_sorted)) == len(p.split())
 
-# Part 1 
+# Part 1
 assert valid_p1("aa bb cc dd ee")
 assert not valid_p1("aa bb cc dd aa")
 assert valid_p1("aa bb cc dd aaa")
-assert num_valid_phrases("aa bb cc dd ee\n" \
-                         "aa bb cc dd aa\n" \
+assert num_valid_phrases("aa bb cc dd ee\n"
+                         "aa bb cc dd aa\n"
                          "aa bb cc dd aaa", valid_p1) == 2
 
 # Part 2
@@ -29,6 +29,6 @@ assert not valid_p2("abcde xyz ecdab")
 assert valid_p2("a ab abc abd abf abj")
 assert valid_p2("iiii oiii ooii oooi oooo")
 assert not valid_p2("oiii ioii iioi iiio")
-assert num_valid_phrases("abcde fghij\n" \
-                         "abcde xyz ecdab\n" \
+assert num_valid_phrases("abcde fghij\n"
+                         "abcde xyz ecdab\n"
                          "oiii ioii iioi iiio", valid_p2) == 1
