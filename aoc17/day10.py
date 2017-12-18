@@ -27,12 +27,6 @@ def hash_round(lst, lengths, curr=0, skip=0):
         skip += 1
     return (lst, curr, skip)
 
-assert hash_round([0,1,2,3,4], [3,4,1,5])[0][0:2] == [3,4]
-
-lst = list(range(0,256))
-lengths = list(map(int, helper.read_day(10).strip().split(',')))
-part1 = hash_round(lst, lengths)[0]
-print("Part 1 solution:", part1[0]*part1[1])
 
 def knot_hash(input_string):
     """Returns knot hash given an input string (lengths)."""
@@ -54,10 +48,19 @@ def knot_hash(input_string):
     knothash = ''.join([hex(num)[2:].zfill(2) for num in dense])
     return(knothash)
 
+assert hash_round([0,1,2,3,4], [3,4,1,5])[0][0:2] == [3,4]
+
 assert knot_hash("") == "a2582a3a0e66e6e86e3812dcb672a272"
 assert knot_hash("AoC 2017") == "33efeb34ea91902bb2f59c9920caa6cd"
 assert knot_hash("1,2,3") == "3efbe78a8d82f29979031a4aa0b16a9d"
 assert knot_hash("1,2,4") == "63960835bcdc130f0b66d7ff4f6a5a8e"
 
-input_string = helper.read_day(10).strip()
-print("Part 2 solution:", knot_hash(input_string))
+if __name__ == "__main__":  # Need to re-use the functions on day 14
+
+    lst = list(range(0,256))
+    lengths = list(map(int, helper.read_day(10).strip().split(',')))
+    part1 = hash_round(lst, lengths)[0]
+    print("Part 1 solution:", part1[0]*part1[1])
+    
+    input_string = helper.read_day(10).strip()
+    print("Part 2 solution:", knot_hash(input_string))
