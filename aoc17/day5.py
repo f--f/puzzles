@@ -1,4 +1,4 @@
-"""Advent of Code 2017 Day 2: A Maze of Twisty Trampolines, All Alike""" 
+"""Advent of Code 2017 Day 5: A Maze of Twisty Trampolines, All Alike""" 
 
 import helper
 
