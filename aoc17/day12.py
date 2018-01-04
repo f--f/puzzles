@@ -1,6 +1,6 @@
 import helper
 import re
-from collections import defaultdict
+from collections import defaultdict, deque
 
 # Parse input as graph
 # Store graph as a dictionary of lists (adjacency list)
@@ -18,14 +18,14 @@ for line in inp:
 def bfs(g, s):
     """Breadth-first search for graph g, starting at node s.
     Returns a set of traversed nodes."""
-    q = [s]
+    q = deque([s])
     discovered = set([s])
     while len(q) > 0:
-        curr = q.pop()
+        curr = q.popleft()
         for neigh in g[curr]:    
             if neigh not in discovered:
                 discovered.add(neigh)
-                q.insert(0, neigh)
+                q.append(neigh)
     return discovered
 
 nodes = bfs(graph, 0)
