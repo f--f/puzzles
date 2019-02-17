@@ -23,7 +23,7 @@ class SinglyLinkedList:
             self.head = node
         else:
             pointer = self.head
-            while pointer.next is not None:
+            while pointer.next:
                 pointer = pointer.next
             pointer.next = node
 
@@ -31,7 +31,7 @@ class SinglyLinkedList:
         """Returns value at specified index of the linked list."""
         i = 0
         pointer = self.head
-        while pointer is not None:
+        while pointer:
             if i == index:
                 return pointer.value
             pointer = pointer.next
@@ -41,10 +41,19 @@ class SinglyLinkedList:
     def __str__(self):
         out = []
         pointer = self.head
-        while pointer is not None:
+        while pointer:
             out.append(pointer.value)
             pointer = pointer.next
         return out.__str__()
+
+
+def print_reverse(head):
+    if head is None:
+        return
+    # This will recurse until the last node
+    # at which point the prints will execute from the end values first
+    print_reverse(head.next)
+    print(head.value)
 
 
 if __name__ == "__main__":
@@ -60,3 +69,5 @@ if __name__ == "__main__":
 
     # Get value at index 3 (third item, counting from zero).
     print(sll.get_value(3))
+
+    print_reverse(sll.head)
